@@ -1,0 +1,83 @@
+role,skill,required_level,weight
+Frontend Developer,HTML,3,1
+Frontend Developer,CSS,3,1
+Frontend Developer,JavaScript,4,1.3
+Frontend Developer,TypeScript,3,1
+Frontend Developer,React,3,1.2
+Frontend Developer,Git,3,0.8
+Frontend Developer,REST API,2,0.7
+Frontend Developer,GitHub,2,0.5
+Backend Developer,Python,3,1
+Backend Developer,Node.js,3,1
+Backend Developer,Express.js,3,1
+Backend Developer,REST API,4,1.3
+Backend Developer,SQL,3,1
+Backend Developer,Git,3,0.8
+Backend Developer,Docker,2,0.8
+Backend Developer,System Design,3,1.2
+Full Stack Developer,HTML,3,0.6
+Full Stack Developer,CSS,3,0.6
+Full Stack Developer,JavaScript,4,1.2
+Full Stack Developer,React,3,1
+Full Stack Developer,Node.js,3,1
+Full Stack Developer,Express.js,3,0.9
+Full Stack Developer,REST API,4,1.2
+Full Stack Developer,SQL,3,0.9
+Full Stack Developer,MongoDB,2,0.7
+Full Stack Developer,Git,3,0.7
+Full Stack Developer,Docker,2,0.6
+Python Developer,Python,4,1.4
+Python Developer,Git,3,0.8
+Python Developer,SQL,3,1
+Python Developer,REST API,3,1
+Python Developer,Pandas,2,0.6
+Python Developer,NumPy,2,0.5
+Python Developer,Docker,2,0.5
+Java Developer,Java,4,1.4
+Java Developer,Spring Boot,4,1.3
+Java Developer,SQL,3,1
+Java Developer,REST API,3,1
+Java Developer,Git,3,0.8
+Java Developer,Docker,2,0.6
+Java Developer,System Design,3,1
+Data Analyst,Python,3,0.8
+Data Analyst,SQL,4,1.4
+Data Analyst,Pandas,3,1.2
+Data Analyst,NumPy,2,0.6
+Data Analyst,Statistics,3,1.2
+Data Analyst,Data Visualization,3,1.3
+Data Analyst,Git,2,0.4
+Data Scientist,Python,4,1.1
+Data Scientist,Pandas,3,1
+Data Scientist,NumPy,3,0.9
+Data Scientist,Statistics,4,1.3
+Data Scientist,Scikit-learn,3,1.3
+Data Scientist,Machine Learning,3,1.4
+Data Scientist,Data Visualization,3,0.8
+Data Scientist,SQL,3,0.7
+Machine Learning Engineer,Python,4,1
+Machine Learning Engineer,NumPy,3,0.8
+Machine Learning Engineer,Pandas,3,0.7
+Machine Learning Engineer,Statistics,3,1
+Machine Learning Engineer,Machine Learning,4,1.5
+Machine Learning Engineer,Scikit-learn,4,1.2
+Machine Learning Engineer,TensorFlow,3,1
+Machine Learning Engineer,PyTorch,3,1
+Machine Learning Engineer,Docker,3,0.7
+Machine Learning Engineer,Linux,2,0.5
+Cloud Engineer,Linux,4,1.2
+Cloud Engineer,AWS,4,1.3
+Cloud Engineer,Azure,3,0.8
+Cloud Engineer,Docker,4,1.2
+Cloud Engineer,Kubernetes,3,1.2
+Cloud Engineer,Terraform,3,1
+Cloud Engineer,CI/CD,3,1
+Cloud Engineer,Git,3,0.6
+DevOps Engineer,Linux,4,1.2
+DevOps Engineer,Git,3,0.6
+DevOps Engineer,Docker,4,1.2
+DevOps Engineer,Kubernetes,4,1.4
+DevOps Engineer,CI/CD,4,1.4
+DevOps Engineer,Terraform,3,1.1
+DevOps Engineer,AWS,3,0.9
+DevOps Engineer,Python,2,0.5

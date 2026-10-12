@@ -1,0 +1,16 @@
+skill,depends_on,strength
+React,JavaScript,1
+TypeScript,JavaScript,1
+Express.js,Node.js,1
+Node.js,JavaScript,0.8
+Spring Boot,Java,1
+Pandas,Python,1
+NumPy,Python,1
+Scikit-learn,Python,1
+Machine Learning,Statistics,1
+TensorFlow,Machine Learning,0.9
+PyTorch,Machine Learning,0.9
+Kubernetes,Docker,1
+CI/CD,Git,0.7
+Terraform,AWS,0.6
+Docker,Linux,0.5

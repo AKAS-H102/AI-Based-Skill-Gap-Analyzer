@@ -1,0 +1,12 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+instance/
+skillgap.sqlite3
+skillgap.sqlite3-shm
+skillgap.sqlite3-wal

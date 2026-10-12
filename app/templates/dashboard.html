@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard · SkillGap AI{% endblock %}
+{% block content %}
+<section class="hero glass reveal">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pulse-dot"></span> AI-POWERED CAREER INTELLIGENCE</div>
+    <h1>Turn your current skills into your <span>next career move.</span></h1>
+    <p class="muted hero-text">Welcome back, {{session.user_name}}. Build an evidence-based skill profile, discover your best-fit careers, and get a learning path that adapts as you improve.</p>
+    <div class="hero-meta">
+      <span><i class="meta-dot"></i> Real-time skill analysis</span>
+      <span><i class="meta-dot"></i> Dependency-aware roadmap</span>
+      <span><i class="meta-dot"></i> ML career matching</span>
+    </div>
+  </div>
+  <div class="hero-status">
+    <div class="status-icon">✦</div>
+    <div><small>ML ENGINE</small><strong>ONLINE</strong></div>
+  </div>
+</section>
+
+<section class="workflow-grid mt-4">
+  <div class="glass panel skills-panel reveal">
+    <div class="section-heading">
+      <div><div class="step-label">01</div><h4>Your skill profile</h4><p class="muted mb-0">Select what you know and set your confidence level.</p></div>
+      <span id="selectedCount" class="badge-soft">0 selected</span>
+    </div>
+    <div class="skill-toolbar mt-4">
+      <div class="search-box"><span>⌕</span><input id="skillSearch" class="form-control" placeholder="Search skills…" aria-label="Search skills"></div>
+      <select id="categoryFilter" class="form-select" aria-label="Filter skills by category"><option value="">All categories</option></select>
+    </div>
+    <div class="skill-hint"><span>Tip</span> Start with your strongest technical skills. The AI uses proficiency + role importance to calculate your match.</div>
+    <div id="skillList" class="skill-list mt-3">
+      {% for s in skills %}
+      <div class="skill-row" data-id="{{s.id}}" data-name="{{s.name|lower}}" data-category="{{s.category|lower}}">
+        <label class="skill-check"><input type="checkbox" class="pick" aria-label="Select {{s.name}}" {% if s.id in selected %}checked{% endif %}><span class="checkmark"></span></label>
+        <div class="skill-main"><strong>{{s.name}}</strong><small>{{s.category}}</small></div>
+        <select class="form-select form-select-sm level" aria-label="{{s.name}} proficiency">
+          <option value="1" {% if selected.get(s.id)==1 %}selected{% endif %}>1 · Beginner</option>
+          <option value="2" {% if selected.get(s.id)==2 %}selected{% endif %}>2 · Intermediate</option>
+          <option value="3" {% if selected.get(s.id)==3 %}selected{% endif %}>3 · Advanced</option>
+          <option value="4" {% if selected.get(s.id)==4 %}selected{% endif %}>4 · Expert</option>
+        </select>
+      </div>
+      {% endfor %}
+    </div>
+    <div id="noSkillsFound" class="empty compact d-none">No skills match your search.</div>
+    <button id="saveSkills" class="btn btn-outline-light w-100 mt-3">Save skill profile</button>
+  </div>
+
+  <div class="glass panel analysis-panel reveal">
+    <div class="section-heading">
+      <div><div class="step-label">02</div><h4>Target career</h4><p class="muted mb-0">Choose the role you want the AI to analyze against.</p></div>
+      <span class="badge-soft">AI analysis</span>
+    </div>
+    <label class="field-label mt-4" for="role">Target role</label>
+    <select id="role" class="form-select form-select-lg mt-2">
+      <option value="">Choose a target role…</option>
+      {% for r in roles %}<option value="{{r.id}}">{{r.name}}</option>{% endfor %}
+    </select>
+    <button id="analyze" class="btn btn-primary analyze-btn w-100 mt-3"><span>Analyze My Skills</span><b>→</b></button>
+    <div class="analysis-preview mt-4">
+      <div class="preview-title"><span class="mini-orbit">✦</span> What happens next</div>
+      <div class="analysis-steps">
+        <div><span>01</span><p>Compare your profile with role requirements</p></div>
+        <div><span>02</span><p>Calculate weighted gaps and priorities</p></div>
+        <div><span>03</span><p>Resolve skill dependencies</p></div>
+        <div><span>04</span><p>Generate your personalized roadmap</p></div>
+      </div>
+    </div>
+    <div id="processing" class="processing d-none">
+      <div class="scan-line"></div><div class="ai-processing-icon">✦</div>
+      <strong id="processText">Analyzing your skill profile…</strong>
+      <small>Comparing requirements · calculating gaps · analyzing dependencies</small>
+      <div class="processing-bar"><span></span></div>
+    </div>
+    <div id="results" class="d-none">
+      <div class="results-head mt-4"><div><div class="eyebrow">ANALYSIS COMPLETE</div><h5 class="mb-0">Your skill intelligence</h5></div><span class="live-pill">● LIVE</span></div>
+      <div class="metrics mt-3">
+        <div class="metric-card accent"><small>OVERALL MATCH</small><strong id="match">0%</strong><span>career readiness</span></div>
+        <div class="metric-card"><small>STRONG</small><strong id="strong">0</strong><span>skills on target</span></div>
+        <div class="metric-card"><small>GAPS</small><strong id="gaps">0</strong><span>skills to improve</span></div>
+        <div class="metric-card"><small>PATH ITEMS</small><strong id="pathCount">0</strong><span>learning steps</span></div>
+      </div>
+      <div class="chart-shell mt-3"><div class="chart-title">Current vs required proficiency</div><canvas id="gapChart"></canvas></div>
+      <div class="priority-shell mt-3"><div class="chart-title">Highest-priority gaps</div><div id="priorityList" class="mt-2"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pathSection" class="glass panel roadmap-section mt-4 d-none reveal">
+  <div class="section-heading"><div><div class="step-label">03</div><h3>Personalized learning roadmap</h3><p class="muted mb-0">A dependency-aware sequence generated from your actual gaps.</p></div><span class="badge-soft">Dependency-aware</span></div>
+  <div id="path" class="roadmap mt-4"></div>
+</section>
+
+<section class="row g-4 mt-1">
+  <div class="col-lg-7"><div class="glass panel reveal"><div class="section-heading compact-heading"><div><div class="step-label">04</div><h4>Career recommendations</h4></div><span class="muted">TF-IDF + cosine similarity</span></div><div id="careers" class="mt-3 empty">Run an analysis to compare your profile with available careers.</div></div></div>
+  <div class="col-lg-5"><div class="glass panel reveal"><div class="section-heading compact-heading"><div><div class="step-label">05</div><h4>How the score works</h4></div><span class="badge-soft">Weighted model</span></div><p class="muted mt-3">Each required skill contributes according to its importance weight. Current proficiency is capped at the required level, so exceeding a requirement does not inflate the score.</p><div class="formula">match = Σ(min(current, required) × weight) / Σ(required × weight) × 100</div></div></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{url_for('static',filename='js/dashboard.js')}}"></script>{% endblock %}

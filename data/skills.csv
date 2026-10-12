@@ -1,0 +1,35 @@
+name,category,description
+HTML,Frontend,Semantic structure and accessible markup
+CSS,Frontend,Responsive styling and layout
+JavaScript,Frontend,Modern browser programming
+TypeScript,Frontend,Typed JavaScript development
+React,Frontend,Component-based UI development
+Vue.js,Frontend,Progressive frontend framework
+Angular,Frontend,Enterprise frontend framework
+Node.js,Backend,Server-side JavaScript runtime
+Express.js,Backend,Node web framework
+Python,Programming,General purpose programming
+Java,Programming,Object-oriented programming
+Spring Boot,Backend,Java backend framework
+REST API,Backend,HTTP API design
+SQL,Data,Relational querying
+MongoDB,Data,Document database
+Git,Tools,Version control
+GitHub,Tools,Collaborative development
+Docker,Cloud,Containerization
+Linux,Cloud,Linux administration
+AWS,Cloud,Amazon cloud platform
+Azure,Cloud,Microsoft cloud platform
+CI/CD,DevOps,Continuous integration and delivery
+Kubernetes,DevOps,Container orchestration
+Terraform,DevOps,Infrastructure as code
+Pandas,Data,Data analysis in Python
+NumPy,Data,Numerical computing
+Statistics,Data,Statistical reasoning
+Data Visualization,Data,Communicating data visually
+Scikit-learn,AI/ML,Classical machine learning
+TensorFlow,AI/ML,Deep learning framework
+PyTorch,AI/ML,Deep learning framework
+NLP,AI/ML,Natural language processing
+Machine Learning,AI/ML,ML concepts and workflows
+System Design,Backend,Scalable software architecture
